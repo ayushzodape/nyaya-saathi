@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nyaya Saathi — Wireframe Mockups</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 40px;
+    flex-wrap: wrap;
+  }
+
+  .screen-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .screen-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .phone {
+    width: 320px;
+    height: 640px;
+    background: #fff;
+    border-radius: 32px;
+    border: 3px solid #1a1a2e;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .phone::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 24px;
+    background: #1a1a2e;
+    border-radius: 12px;
+    z-index: 10;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1a237e, #283593);
+    color: white;
+    padding: 40px 16px 12px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .header-icon { font-size: 20px; }
+  .header-title {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+  .header-subtitle {
+    font-size: 11px;
+    opacity: 0.85;
+    margin-top: 2px;
+  }
+  .header-back {
+    position: absolute;
+    left: 16px;
+    top: 40px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  /* Body */
+  .body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #fafafa;
+  }
+
+  /* Language toggle */
+  .lang-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin: 4px 0;
+  }
+  .lang-btn {
+    padding: 6px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 2px solid #1a237e;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lang-btn:first-child { border-radius: 16px 0 0 16px; }
+  .lang-btn:last-child { border-radius: 0 16px 16px 0; }
+  .lang-btn.active {
+    background: #1a237e;
+    color: #fff;
+  }
+  .lang-btn:not(.active) {
+    background: #fff;
+    color: #1a237e;
+  }
+
+  /* Input area */
+  .input-area {
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 12px;
+    min-height: 80px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 14px;
+    color: #999;
+    line-height: 1.5;
+  }
+
+  .send-btn {
+    background: linear-gradient(135deg, #FF6F00, #FF8F00);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+
+  /* Examples */
+  .examples-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .example-chip {
+    background: #E8EAF6;
+    border: 1px solid #C5CAE9;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 12px;
+    color: #283593;
+    line-height: 1.4;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+
+  /* Disclaimer bar */
+  .disclaimer-bar {
+    background: #FFF3E0;
+    border-top: 1px solid #FFE0B2;
+    padding: 8px 14px;
+    font-size: 10px;
+    color: #E65100;
+    text-align: center;
+    flex-shrink: 0;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    line-height: 1.4;
+  }
+
+  /* Screen 2 — Rights */
+  .user-msg {
+    background: #E3F2FD;
+    border-radius: 12px 12px 4px 12px;
+    padding: 10px 12px;
+    font-size: 13px;
+    color: #1565C0;
+    align-self: flex-end;
+    max-width: 85%;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    line-height: 1.4;
+  }
+  .user-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #999;
+    align-self: flex-end;
+    margin-bottom: -4px;
+  }
+
+  .section-header {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a237e;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+
+  .right-card {
+    background: #fff;
+    border: 1px solid #E8EAF6;
+    border-left: 4px solid #FF8F00;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .right-number {
+    font-size: 11px;
+    font-weight: 700;
+    color: #FF8F00;
+  }
+  .right-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a2e;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+  .right-section {
+    font-size: 10px;
+    font-weight: 600;
+    color: #1a237e;
+    background: #E8EAF6;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    width: fit-content;
+  }
+  .right-desc {
+    font-size: 12px;
+    color: #444;
+    line-height: 1.4;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+
+  .action-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff;
+    border: 2px solid #1a237e;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a237e;
+    cursor: pointer;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+  .action-btn.primary {
+    background: linear-gradient(135deg, #1a237e, #283593);
+    color: white;
+    border: none;
+  }
+
+  /* Screen 3 — Document */
+  .doc-badge {
+    background: #E8F5E9;
+    border: 1px solid #C8E6C9;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #2E7D32;
+    text-align: center;
+  }
+
+  .doc-content {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #333;
+  }
+  .doc-content .to { color: #666; margin-bottom: 6px; }
+  .doc-content .subject { font-weight: 700; color: #1a237e; margin: 8px 0; }
+  .doc-content .body-text { margin-top: 4px; }
+  .doc-content .sections-cited {
+    background: #FFF3E0;
+    border-radius: 6px;
+    padding: 8px;
+    margin-top: 8px;
+    font-size: 11px;
+    color: #E65100;
+  }
+
+  .btn-row {
+    display: flex;
+    gap: 8px;
+  }
+  .btn-row .btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+  .btn-copy {
+    background: #fff;
+    border: 2px solid #1a237e;
+    color: #1a237e;
+  }
+  .btn-download {
+    background: linear-gradient(135deg, #2E7D32, #388E3C);
+    border: none;
+    color: #fff;
+  }
+
+  .next-steps {
+    background: #E3F2FD;
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+  .next-steps-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1565C0;
+    margin-bottom: 6px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+  .step {
+    font-size: 12px;
+    color: #333;
+    padding: 3px 0;
+    display: flex;
+    gap: 6px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    line-height: 1.4;
+  }
+  .step-num {
+    background: #1565C0;
+    color: #fff;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- SCREEN 1: HOME / INTAKE SCREEN               -->
+<!-- ============================================ -->
+<div class="screen-container">
+  <div class="screen-label">Screen 1 — Home / Intake</div>
+  <div class="phone">
+    <div class="header">
+      <div class="header-icon">⚖️</div>
+      <div class="header-title">न्याय साथी</div>
+      <div class="header-subtitle">Nyaya Saathi — Justice Companion</div>
+    </div>
+
+    <div class="body">
+      <div class="lang-toggle">
+        <div class="lang-btn active">🇮🇳 हिन्दी</div>
+        <div class="lang-btn">English</div>
+      </div>
+
+      <div class="input-area">
+        अपनी समस्या यहाँ बताइए...<br/>
+        <span style="font-size:11px; color:#bbb;">Describe your situation here...</span>
+      </div>
+
+      <div class="send-btn">भेजें / Send ➤</div>
+
+      <div class="examples-label">💡 उदाहरण — Examples:</div>
+
+      <div class="example-chip">
+        मेरे पति मुझे मारते हैं और ससुराल वालों ने मेरा ज़ेवर ले लिया
+      </div>
+      <div class="example-chip">
+        MGNREGA mein 45 din kaam kiya lekin 20 din ka hi paisa mila
+      </div>
+      <div class="example-chip">
+        My employer fired me without notice and owes me 3 months salary
+      </div>
+    </div>
+
+    <div class="disclaimer-bar">
+      ⚠️ यह कानूनी सलाह नहीं है। मार्गदर्शन के लिए है। कृपया DLSA से संपर्क करें।
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SCREEN 2: RIGHTS EXPLANATION SCREEN           -->
+<!-- ============================================ -->
+<div class="screen-container">
+  <div class="screen-label">Screen 2 — Rights Explanation</div>
+  <div class="phone">
+    <div class="header" style="position:relative;">
+      <div class="header-back">← Back</div>
+      <div class="header-icon">⚖️</div>
+      <div class="header-title">न्याय साथी</div>
+      <div class="header-subtitle">आपके अधिकार — Your Rights</div>
+    </div>
+
+    <div class="body">
+      <div class="user-label">👩 आपने कहा:</div>
+      <div class="user-msg">
+        Mere pati mujhe marte hain aur sasural waalon ne mera zewar le liya
+      </div>
+
+      <div class="section-header">📋 आपके अधिकार:</div>
+
+      <div class="right-card">
+        <div class="right-number">अधिकार 1</div>
+        <div class="right-title">घर में रहने का अधिकार</div>
+        <div class="right-section">DV Act, Section 17</div>
+        <div class="right-desc">
+          कानून कहता है कि आपको अपने ससुराल के घर में रहने का पूरा अधिकार है। कोई भी आपको घर से निकाल नहीं सकता।
+        </div>
+      </div>
+
+      <div class="right-card">
+        <div class="right-number">अधिकार 2</div>
+        <div class="right-title">सुरक्षा आदेश का अधिकार</div>
+        <div class="right-section">DV Act, Section 12</div>
+        <div class="right-desc">
+          आप मजिस्ट्रेट से सुरक्षा आदेश ले सकती हैं। आपके पति को आपके पास आने से रोका जा सकता है।
+        </div>
+      </div>
+
+      <div class="right-card">
+        <div class="right-number">अधिकार 3</div>
+        <div class="right-title">स्त्रीधन वापसी का अधिकार</div>
+        <div class="right-section">Dowry Act, Section 3</div>
+        <div class="right-desc">
+          आपके ज़ेवर (स्त्रीधन) पर आपका कानूनी अधिकार है। इन्हें वापस पाने के लिए शिकायत दर्ज करें।
+        </div>
+      </div>
+
+      <div class="action-btn primary">📝 शिकायत पत्र बनाएं — Draft Complaint</div>
+      <div class="action-btn">📍 नज़दीकी कानूनी सहायता केंद्र खोजें</div>
+    </div>
+
+    <div class="disclaimer-bar">
+      ⚠️ यह कानूनी सलाह नहीं है। Act & Section स्वतंत्र रूप से सत्यापित करें।
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SCREEN 3: DOCUMENT GENERATION SCREEN          -->
+<!-- ============================================ -->
+<div class="screen-container">
+  <div class="screen-label">Screen 3 — Document Generated</div>
+  <div class="phone">
+    <div class="header" style="position:relative;">
+      <div class="header-back">← Back</div>
+      <div class="header-icon">📝</div>
+      <div class="header-title">शिकायत पत्र</div>
+      <div class="header-subtitle">Complaint Letter — Auto-Generated</div>
+    </div>
+
+    <div class="body">
+      <div class="doc-badge">✅ शिकायत पत्र तैयार है — Your complaint letter is ready</div>
+
+      <div class="doc-content">
+        <div class="to">
+          सेवा में,<br/>
+          संरक्षण अधिकारी<br/>
+          <span style="color:#1a237e; font-weight:600;">[YOUR DISTRICT]</span>, उत्तर प्रदेश
+        </div>
+        <div class="subject">विषय: घरेलू हिंसा अधिनियम 2005 के अंतर्गत शिकायत</div>
+        <div class="body-text">
+          महोदय/महोदया,<br/><br/>
+          मैं <span style="color:#1a237e; font-weight:600;">[YOUR NAME]</span>, 
+          निवासी <span style="color:#1a237e; font-weight:600;">[YOUR ADDRESS]</span>,
+          आपको सूचित करना चाहती हूँ कि मेरे पति द्वारा मुझ पर शारीरिक हिंसा की जा रही है 
+          तथा मेरे ससुराल वालों ने मेरा स्त्रीधन (ज़ेवर) ज़ब्त कर लिया है...
+        </div>
+        <div class="sections-cited">
+          📌 संलग्न धाराएं: DV Act Section 3, 12, 17 | IPC Section 498A | Dowry Act Section 3
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <div class="btn btn-copy">📋 Copy</div>
+        <div class="btn btn-download">⬇️ Download</div>
+      </div>
+
+      <div class="next-steps">
+        <div class="next-steps-title">📌 अगला कदम — Next Steps:</div>
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>नज़दीकी थाने या महिला हेल्पलाइन (181) पर जाएं</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>आधार कार्ड और शादी का प्रमाणपत्र ले जाएं</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>यह पत्र दिखाएं और FIR दर्ज कराएं</div>
+        </div>
+      </div>
+
+      <div class="action-btn">📍 DLSA लखनऊ — ☎️ 0522-XXXXXXX</div>
+    </div>
+
+    <div class="disclaimer-bar">
+      ⚠️ यह मार्गदर्शन है, कानूनी सलाह नहीं। DLSA से संपर्क करें।
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
